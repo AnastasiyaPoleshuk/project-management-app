@@ -47,6 +47,9 @@ async function createResponse(
       const error = await response.text();
       throw new Error(error);
     }
+    if (method === 'DELETE') {
+      return response;
+    }
     return response.json();
   } catch (error) {
     return Promise.reject(error);

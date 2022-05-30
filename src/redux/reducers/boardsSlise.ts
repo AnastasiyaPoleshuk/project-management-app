@@ -39,7 +39,6 @@ export const boardsSlice = createSlice({
       .addCase(removeBoard.pending, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.boards = state.boards.filter((board) => board.id !== action.payload);
       })
       .addCase(removeBoard.fulfilled, (state, action: PayloadAction<string>) => {
         state.isLoading = false;

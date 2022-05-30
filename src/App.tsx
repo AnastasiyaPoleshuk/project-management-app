@@ -22,21 +22,23 @@ const App = () => {
 
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Main />} />
+      <div className="content-wrapper">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Main />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
 
-        <Route path="/edit-profile" element={<EditProfile />} />
+          <Route path="/edit-profile" element={<EditProfile />} />
 
-        <Route path="/welcome" element={<Welcome />} />
+          <Route path="/welcome" element={<Welcome />} />
 
-        <Route path="/board/:boardId" element={<Board />} />
+          <Route path={isAuth ? '/board/:boardId' : '/welcome'} element={<Board />} />
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
       <Footer />
     </>
   );

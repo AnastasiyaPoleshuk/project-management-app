@@ -7,30 +7,26 @@ import BoardCreate from '../../components/BoardCreate/BoardCreate';
 import useTypedSelector from '../../hooks/useTypedSelector';
 import useAppDispatch from '../../hooks/useAppDispatch';
 import { getBoardsList } from '../../redux/thunks/boardThunks';
-import CONSTANTS from '../../utils/constants';
 
 const Main = () => {
   const navigate = useNavigate();
-  const { isAuth } = useTypedSelector((state) => state.auth);
+  const { isAuth, token } = useTypedSelector((state) => state.auth);
   const dispatch = useAppDispatch();
   const { boards, isLoading } = useTypedSelector((state) => state.boards);
 
   useEffect(() => {
     if (!isAuth) {
-      navigate('/');
+      navigate('/welcome');
+    } else {
+      dispatch(getBoardsList(token as string));
     }
   }, [isAuth]);
 
-  useEffect(() => {
-    dispatch(
-      getBoardsList(
-        CONSTANTS.TOKEN
-      )
-    );
-  }, []);
-
   return (
     <main className="main">
+      <div className="img-box">
+        <h2 className="title">Your boards</h2>
+      </div>
       <div className="board-wrap">
         {isLoading ? (
           <Loading />

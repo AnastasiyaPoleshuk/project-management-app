@@ -3,36 +3,113 @@
 .footer {
   margin: 0 auto;
   padding: 10px 0;
-  border: 1px solid rgb(170, 76, 139);
+  background-color: $main-light-pink;
 
   .center-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-}
 
-.footer__left-container {
-  flex: 1;
-}
+  .footer__left-container {
+    flex: 1;
+  }
 
-.footer__center-container {
-  flex: 2;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+  .footer__center-container {
+    flex: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
 
-.footer__right-container {
-  flex: 1;
-  width: 150px;
-  height: 60px;
-  background-image: url('https://rs.school/images/rs_school_js.svg');
-  background-repeat: no-repeat;
-  background-size: 100px 60px;
-  background-position: right;
-  & .course-link {
+    & a {
+      &:hover {
+        color: $main-blue;
+        background: transparent;
+        box-shadow: none;
+      }
+
+      &:first-child:after {
+        content: '';
+        position: absolute;
+        left: 80px;
+        bottom: -2px;
+        height: 2px;
+        width: 0;
+        background: $main-blue;
+        transition: 400ms ease all;
+      }
+
+      &:first-child:hover:after {
+        width: 60px;
+        transition: 800ms ease all;
+      }
+
+      &:nth-child(2):after {
+        content: '';
+        position: absolute;
+        left: 301px;
+        bottom: -2px;
+        height: 2px;
+        width: 0;
+        background: $main-blue;
+        transition: 400ms ease all;
+      }
+
+      &:nth-child(2):hover:after {
+        width: 102px;
+        transition: 800ms ease all;
+      }
+
+      &:last-child:after {
+        content: '';
+        position: absolute;
+        left: 565px;
+        bottom: -2px;
+        height: 2px;
+        width: 0;
+        background: $main-blue;
+        transition: 400ms ease all;
+      }
+
+      &:last-child:hover:after {
+        width: 55px;
+        transition: 800ms ease all;
+      }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .footer__center-container {
+      flex-direction: column;
+      row-gap: 6px;
+    }
+  }
+
+  .footer__right-container {
+    flex: 1;
     width: 150px;
     height: 60px;
+    background-image: url('https://rs.school/images/rs_school_js.svg');
+    background-repeat: no-repeat;
+    background-size: 100px 60px;
+    background-position: right;
+    & .course-link {
+      width: 150px;
+      height: 60px;
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .footer__right-container {
+      background-size: 70px 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 }

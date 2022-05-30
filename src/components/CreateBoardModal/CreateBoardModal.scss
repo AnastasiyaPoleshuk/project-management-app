@@ -1,17 +1,18 @@
 @import '../../App.variables.scss';
 
 .createBoard-form {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   z-index: 2;
   background: rgba(0, 0, 0, 0.514);
+  margin: 0 !important;
 
   .form {
-    width: 250px;
-    height: 300px;
+    width: 400px;
+    height: 285px;
     background: rgb(255, 255, 255);
     border-radius: 20px;
     position: absolute;
@@ -20,12 +21,14 @@
     z-index: 3;
     transform: translate(-50%, -50%);
     padding: 20px;
+    padding-top: 24px;
     font-size: $text-font;
     font-weight: normal;
     text-align: center;
+    margin: 0 !important;
 
     .form-complete {
-      margin-bottom: 22px;
+      margin-bottom: 22px !important;
       animation: transfusion 0.8s infinite alternate;
 
       @keyframes transfusion {
@@ -39,12 +42,12 @@
     }
 
     .form-title {
-      margin-bottom: 32px;
+      margin: 0 0 32px 0 !important;
       font-size: $title-font;
     }
 
     .form-error {
-      margin-left: 8px;
+      margin-left: 8px !important;
       position: relative;
       bottom: 14px;
       font-size: $subtitle-font - 5px;
@@ -56,34 +59,44 @@
     }
 
     .form-input {
-      margin-bottom: 22px;
-      padding: 6px 12px;
+      margin: 0 auto;
+      margin-bottom: 24px;
+      padding: 20px 18px;
       height: 36px;
-      width: 100%;
+      width: 90%;
       display: block;
+      @include font;
       background-color: #fff;
       border-radius: 8px;
-      border: 1px solid rgb(214, 214, 214);
+      border: 1px solid $main-blue;
+      margin: 0 0 25px 20px !important;
 
       &.input-text::placeholder {
-        font-size: $text-font;
+        @include font;
         opacity: 0.5;
       }
 
       &.input-error {
         border-color: red;
+        margin: 0 !important;
       }
     }
 
     .btn-submit {
-      margin: 0 auto;
+      margin: 0 auto !important;
       padding: 10px 22px;
       display: block;
-      background-color: goldenrod;
-      border: none;
-      border-radius: 9px;
+      @include font;
+      font-size: $text-font + 4px;
+      font-weight: bold;
+      color: $main-light-orange;
+      background-color: #fff;
+      border: 2px solid $main-light-orange;
+      border-radius: 10px;
 
       &:hover {
+        color: #fff;
+        background-color: $main-light-orange;
         animation: bounce 0.8s infinite alternate;
 
         &:disabled {
@@ -103,6 +116,22 @@
           transform: scale(1.05);
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .form {
+      width: 300px;
+      height: 220px;
+      padding: 14px;
+      padding-top: 24px;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .form {
+      padding: 10px;
+      padding-top: 24px;
     }
   }
 }

@@ -2,16 +2,16 @@
 
 .header {
   margin: 0 auto;
-  padding: 20px 0;
-  border: 1px solid rgb(113, 238, 94);
+  padding: 15px 0;
   transition: all 0.25s ease-out;
+  background-color: $main-light-blue;
 
   &.header_sticky {
-    padding: 12px 0;
+    padding: 10px 0;
     width: 100vw;
     position: fixed;
     z-index: 1;
-    background-color: #fff;
+    background-color: $main-light-pink;
   }
 
   .center-container {
@@ -20,22 +20,41 @@
     align-items: center;
   }
 
+  &.header_sticky .center-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0px;
+  }
+
   div {
     display: flex;
     column-gap: 12px;
   }
 
   .header__btn {
-    font-size: $title-font;
     background: none;
     border: none;
+    position: relative;
 
     &.btn-home {
+      width: 30px;
+      height: 30px;
       font-size: $big-font;
+      background-image: url('../.././assets/icon.png');
+      background-repeat: no-repeat;
+      background-size: 30px, 30px;
     }
 
     &.btn-nav {
-      opacity: 0.65;
+      opacity: 0.8;
+      text-transform: uppercase;
+      transition: 0.3s;
+      &:hover {
+        color: $main-blue;
+        background: transparent;
+        box-shadow: none;
+      }
     }
 
     &.btn-nav.active {
@@ -44,6 +63,26 @@
   }
 
   .header__select {
+    font-size: $descr-font;
     border-radius: 10px;
+  }
+
+  &.header_sticky .header__select {
+    background-color: $main-light-pink;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .header__flex-cont {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
   }
 }

@@ -2,14 +2,13 @@
 
 .login-form {
   padding: 30px 0;
-  min-height: $min-height;
 
   .form {
     margin: 0 auto;
     padding: 45px 50px;
     max-width: 28%;
-    font-size: $text-font;
-    font-weight: normal;
+    @include font;
+    font-size: $text-font + 12px;
     text-align: center;
     border-radius: 8px;
 
@@ -24,8 +23,8 @@
     }
 
     .form-title {
-      margin-bottom: 22px;
-      font-size: $title-font;
+      margin-bottom: 32px;
+      font-size: $text-font + 12px;
     }
 
     .form-error {
@@ -41,17 +40,23 @@
     }
 
     .form-input {
-      margin-bottom: 22px;
-      padding: 6px 12px;
+      margin: 0 auto;
+      margin-bottom: 24px;
+      padding: 20px 18px;
       height: 36px;
       width: 100%;
       display: block;
+      @include font;
       background-color: #fff;
       border-radius: 8px;
-      border: 1px solid rgb(214, 214, 214);
+      border: 1px solid $main-blue;
+
+      &:last-of-type {
+        margin-bottom: 30px;
+      }
 
       &.input-text::placeholder {
-        font-size: $text-font;
+        @include font;
         opacity: 0.5;
       }
 
@@ -61,7 +66,7 @@
     }
 
     .btn-register {
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       display: block;
       font-size: $descr-font + 2px;
       opacity: 0.85;
@@ -70,11 +75,15 @@
 
     .btn-submit {
       margin: 0 auto;
-      padding: 10px 22px;
+      padding: 8px 36px;
       display: block;
-      background-color: goldenrod;
-      border: none;
-      border-radius: 9px;
+      @include font;
+      font-size: $text-font + 4px;
+      font-weight: bold;
+      color: $main-light-orange;
+      background-color: transparent;
+      border: 3px solid $main-light-orange;
+      border-radius: 10px;
 
       &:hover {
         animation: bounce 0.8s infinite alternate;
@@ -96,6 +105,36 @@
           transform: scale(1.05);
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .form {
+      max-width: 40%;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .form {
+      max-width: 50%;
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .form {
+      max-width: 65%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .form {
+      max-width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    .form {
+      max-width: 90%;
     }
   }
 }

@@ -1,5 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { IBoard, ICreateBoard, ICreatedBoard } from '../../types/apiTypes';
+import {
+  IBoard,
+  ICreateBoard,
+  ICreatedBoard,
+  ICreateColumn,
+  ICreateTask,
+  IUpdateTask,
+  IUpdateColumn,
+} from '../../types/apiTypes';
 import {
   getBoards,
   createBoard,
@@ -10,9 +18,10 @@ import {
   deleteColumn,
   createTask,
   updateTask,
+  deleteTask,
 } from '../../api/apiService';
-import { ICreateColumn, ICreateTask, IUpdateTask } from '../../api/types';
-import { removeCol } from '../reducers/boardSlice';
+
+import { columnDeleted, columnEdited, taskDeleted, taskEdited } from '../reducers/boardSlice';
 
 export interface ValidationErrors {
   rejectValue: string;
@@ -34,8 +43,8 @@ export const addBoard = createAsyncThunk<ICreatedBoard, ICreateBoard, Validation
   'board/addBoard',
   async (BoardData: ICreateBoard, { rejectWithValue }) => {
     try {
-      const { token, title } = BoardData;
-      const response = await createBoard({ title }, token);
+      const { token, title, description } = BoardData;
+      const response = await createBoard({ title, description }, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);
@@ -52,6 +61,9 @@ export const removeBoard = createAsyncThunk<
     const { token } = BoardData;
 
     const response = await deleteBoard(BoardData.boardId, token);
+    if (response.ok) {
+      return BoardData.boardId;
+    }
     return response;
   } catch (err) {
     return rejectWithValue((err as Error).message);
@@ -91,11 +103,12 @@ export const addColumn = createAsyncThunk(
 export const editColumn = createAsyncThunk(
   'board/editColumn',
   async (
-    data: { boardId: string; columnId: string; column: ICreateColumn; token: string },
-    { rejectWithValue }
+    data: { boardId: string; columnId: string; column: IUpdateColumn; token: string },
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const { boardId, columnId, column, token } = data;
+      dispatch(columnEdited({ columnId, column }));
       const response = await updateColumn(boardId, columnId, column, token);
       return response;
     } catch (err) {
@@ -112,7 +125,7 @@ export const removeColumn = createAsyncThunk(
   ) => {
     try {
       const { boardId, columnId, token } = data;
-      dispatch(removeCol({ columnId }));
+      dispatch(columnDeleted({ columnId }));
       const response = await deleteColumn(boardId, columnId, token);
       return response;
     } catch (err) {
@@ -141,11 +154,29 @@ export const editTask = createAsyncThunk(
   'board/editTask',
   async (
     data: { boardId: string; columnId: string; taskId: string; task: IUpdateTask; token: string },
-    { rejectWithValue }
+    { rejectWithValue, dispatch }
   ) => {
     try {
       const { boardId, columnId, taskId, task, token } = data;
+      dispatch(taskEdited({ columnId, taskId, task }));
       const response = await updateTask(boardId, columnId, taskId, task, token);
+      return response;
+    } catch (err) {
+      return rejectWithValue((err as Error).message);
+    }
+  }
+);
+
+export const removeTask = createAsyncThunk(
+  'board/removeTask',
+  async (
+    data: { boardId: string; columnId: string; taskId: string; token: string },
+    { rejectWithValue, dispatch }
+  ) => {
+    try {
+      const { boardId, columnId, taskId, token } = data;
+      dispatch(taskDeleted({ columnId, taskId }));
+      const response = await deleteTask(boardId, columnId, taskId, token);
       return response;
     } catch (err) {
       return rejectWithValue((err as Error).message);

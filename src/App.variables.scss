@@ -3,7 +3,40 @@ $text-font: 18px;
 $subtitle-font: 20px;
 $title-font: 24px;
 $big-font: 36px;
+$font-family: 'Montserrat', sans-serif;
+$font-color: rgb(39, 39, 41);
 
-$min-height: 77.7vh;
-$main-width: 1200px;
+$main-width: 1400px;
 $section-height: 700px;
+$bg-light-color: rgb(255, 255, 255);
+$main-blue: #7692c7;
+$main-light-blue: #e9f0ff;
+$main-light-pink: #ffeded;
+$main-light-yellow: #fcf3ea;
+$main-light-orange: #ffd4a9;
+
+@mixin font {
+  font-family: $font-family;
+  font-size: $text-font;
+  font-weight: normal;
+  letter-spacing: 1;
+  color: $font-color;
+}
+
+@mixin h1 {
+  font-size: $big-font * 2.5;
+  font-weight: bold;
+  letter-spacing: -4px;
+  line-height: 85px;
+}
+
+@mixin h2 {
+  font-size: $big-font * 1.5;
+  font-weight: bold;
+  letter-spacing: -2px;
+}
+
+@mixin h3 {
+  font-size: $big-font;
+  font-weight: bolder;
+}

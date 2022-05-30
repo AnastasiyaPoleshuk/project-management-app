@@ -1,0 +1,81 @@
+@import '/src/App.variables.scss';
+
+.form {
+  width: 350px;
+}
+
+.formInput,
+.formText {
+  @include font;
+  width: 100%;
+  margin: 5px 0 16px 0;
+  padding: 8px 12px;
+  min-height: 44px;
+  display: block;
+  background-color: #fff;
+  border-radius: 8px;
+  border: 1px solid $main-blue;
+
+  &.input-text::placeholder {
+    @include font;
+    opacity: 0.5;
+  }
+}
+.formText {
+  height: 80px;
+}
+.formError {
+  color: red;
+}
+.btnWrapper {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.formBtn {
+  margin: 0 auto;
+  padding: 8px 22px;
+  display: block;
+  @include font;
+  font-size: $text-font + 2px;
+  font-weight: bold;
+  color: $main-light-orange;
+  background-color: #fff;
+  border: 2px solid $main-light-orange;
+  border-radius: 9px;
+  transition: 0.5px;
+
+  &:last-child {
+    background-color: #fff;
+    border: 2px solid brown;
+    color: brown;
+
+    &:hover {
+      background-color: brown;
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  &:hover {
+    background-color: $main-light-orange;
+    color: rgb(255, 255, 255);
+    animation: bounce 0.8s infinite alternate;
+    &:disabled {
+      animation: none;
+    }
+  }
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  @keyframes bounce {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
+}

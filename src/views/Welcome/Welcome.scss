@@ -3,30 +3,129 @@
   width: $main-width;
   height: $section-height;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: 1px solid rgb(93, 201, 174);
   margin: auto;
-}
 
-.welcome-img {
-  width: 600px;
-  height: 600px;
-  margin: 10px 50px;
-  border: 1px solid rgb(201, 93, 120);
-}
+  @media (max-width: 1024px) {
+    width: 1000px;
+    height: 500px;
+  }
 
-.title {
-  font-size: 36px;
+  .title-blok {
+    align-self: flex-start;
+    margin: 90px 0 0 0;
+
+    @media (max-width: 1024px) {
+      margin: 60px 0 0 0;
+    }
+
+    & p {
+      @include font;
+      font-size: $descr-font;
+      font-style: italic;
+      width: 400px;
+      margin: 0 0 0 170px;
+
+      @media (max-width: 1024px) {
+        width: 400px;
+        margin: 0 0 0 95px;
+      }
+    }
+  }
+
+  .welcome-img {
+    background-image: url('../.././assets/welcome-img.png');
+    background-size: 700px, 600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 700px;
+    height: 600px;
+
+    @media (max-width: 1024px) {
+      background-size: 510px, 500px;
+      width: 510px;
+      height: 500px;
+    }
+  }
+
+  .title {
+    @include h1;
+    width: 512px;
+    margin: 0px 0px 40px 15px;
+    text-align: center;
+
+    @media (max-width: 1024px) {
+      @include h2;
+      width: 400px;
+    }
+  }
 }
 
 .links-box {
   width: $main-width;
-  text-align: center;
-  border: 1px solid rgb(64, 53, 124);
   margin: auto;
-}
+  border-bottom: 1px solid rgba(39, 39, 41, 0.178);
+  text-align: right;
+  position: relative;
 
-.btn {
-  margin-right: 20px;
+  @media (max-width: 1024px) {
+    width: 1000px;
+  }
+
+  .btn {
+    width: 120px;
+    height: 40px;
+    font-size: $text-font;
+    line-height: 42px;
+    padding: 0;
+    border: none;
+    background: none;
+
+    &:hover {
+      color: $main-blue;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    &:first-child:after {
+      content: '';
+      position: absolute;
+      left: 1022px;
+      bottom: 4px;
+      height: 2px;
+      width: 0;
+      background: $main-blue;
+      transition: 400ms ease all;
+    }
+
+    &:first-child:hover:after {
+      width: 95px;
+      transition: 800ms ease all;
+    }
+  }
+
+  .btn:last-child {
+    margin-right: 150px;
+
+    @media (max-width: 1024px) {
+      margin-right: 90px;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      left: 1147px;
+      bottom: 4px;
+      height: 2px;
+      width: 0;
+      background: $main-blue;
+      transition: 400ms ease all;
+    }
+
+    &:hover:after {
+      width: 90px;
+      transition: 800ms ease all;
+    }
+  }
 }

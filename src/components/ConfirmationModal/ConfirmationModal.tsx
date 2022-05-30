@@ -8,12 +8,19 @@ type ConfirmationModalType = {
 
 const ConfirmationModal = (props: ConfirmationModalType) => {
   const { close, remove, id } = props;
-  return
+  return (
     <div className="overlay">
       <div className="modal-window">
         <h3 className="modal-title">Are you sure?</h3>
         <div className="btn-wrap">
-          <button type="button" className="btn-success" onClick={() => remove(id)}>
+          <button
+            type="button"
+            className="btn-success"
+            onClick={() => {
+              remove(id);
+              close();
+            }}
+          >
             Yes
           </button>
           <button type="button" className="btn-fail" onClick={() => close()}>

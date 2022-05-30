@@ -1,23 +1,59 @@
+@import '../../App.variables.scss';
+
 .card-item {
   font-weight: 400;
-  background-color: #fff;
+  background: $main-light-yellow;
   padding: 10px;
-  color: #4d4d4d;
-  box-shadow: 0 1px 0 rgba(9,45,66,.25);
+  box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
   border-radius: 3px;
   margin-bottom: 10px;
   word-wrap: break-word;
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
 }
+
 .card-item:hover {
-  background-color: #eee;
-}
-.task-title {
-  font-size: 20px;
   font-weight: bold;
+  background: $main-light-orange;
+  color: $main-blue;
+}
+
+.task-title {
+  font-size: $title-font;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: $main-blue;
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(39, 39, 41, 0.377);
+  margin-bottom: 20px;
+  padding: 0 0 2px 0;
+}
+
+.task-description {
+  height: 50px;
   margin-bottom: 20px;
 }
-.task-description {
-  margin-bottom: 20px;
+.card-title-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.card-btn-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.card-btn {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  font-size: $text-font;
+  opacity: 0.7;
+}
+.edit-btn {
+  margin-bottom: 7px;
+}
+.delete-task-btn {
+  line-height: 1;
 }

@@ -1,61 +1,161 @@
 @import '/src/App.variables.scss';
+
 .column-item {
-  border-radius: 3px;
+  max-width: 265px;
+  border-radius: 6px;
   display: flex;
   flex-direction: column;
-  background-color: #e2e4e6;
-  max-height: calc(100vh - 200px);
+  background-color: #ffffff;
+  max-height: calc(100vh - 230px);
+  padding: 0 0 10px 0;
+
+  @media (max-width: 1024px) {
+    max-width: 220px;
+  }
+
+  .column-title-wrapper {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    padding: 12px;
+  }
+
+  .column-title-wrapper button {
+    background-color: transparent;
+  }
+
+  .column-title {
+    font-weight: bolder;
+    cursor: pointer;
+  }
+
+  .add-card-btn {
+    display: block;
+    width: 245px;
+    border-radius: 6px;
+    font-size: $descr-font;
+    background: $main-light-blue;
+    box-shadow: 0 1px 0 rgba(9, 45, 66, 0.25);
+    padding: 10px;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 10px;
+
+    @media (max-width: 1024px) {
+      width: 200px;
+      margin: 0 10px;
+    }
+  }
+
+  .add-card-btn:hover {
+    font-weight: bold;
+    color: $main-light-orange;
+    background: $main-blue;
+  }
+
+  .delete-btn {
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 20px;
+    background-image: url(../.././assets/trash.png);
+  }
+
+  .column-title-form {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    padding: 10px;
+    border-radius: 4px;
+    background: #e9f0ff;
+  }
+  .column-title-input {
+    display: inline-block;
+    width: 150px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background: transparent;
+    &::placeholder {
+      font-size: $text-font;
+      font-weight: normal;
+      opacity: 0.8;
+    }
+  }
+  .column-title-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  .column-btn {
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    background-color: transparent;
+  }
+
+  .check-btn,
+  .cancel-btn {
+    margin-bottom: 8px;
+  }
 }
-.column-title-wrapper {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  padding: 12px;
-}
-.column-title-wrapper button {
-  background-color: transparent;
-}
-.column-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: #333;
-  cursor: pointer;
-}
-.add-card-btn {
-  display: block;
-  font-weight: 400;
-  color: #838c91;
-  padding: 10px;
-  text-align: left;
-  cursor: pointer;
-  transition: .3s;
-  background-color: transparent;
-}
-.add-card-btn:hover {
-  background-color: #cdd2d4;
-  color: #4d4d4d;
-  text-decoration: underline;
-}
-.delete-btn {
-  background-size: 20px 20px;
-  background-repeat: no-repeat;
-  width: 20px;
-  height: 20px;
-  background-image: url(../../../public/assets/can-trash.png);
-}
+
 .btn-wrapper {
   display: flex;
   gap: 20px;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
+
 .modal-btn {
-  padding: 10px 22px;
+  padding: 8px 22px;
   display: block;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  @include font;
+  font-size: $text-font + 2px;
+  font-weight: bold;
+  color: $main-light-orange;
+  background-color: #fff;
+  border: 2px solid $main-light-orange;
+  border-radius: 9px;
+  transition: 0.5px;
+
+  &:last-child {
+    background-color: #fff;
+    border: 2px solid brown;
+    color: brown;
+
+    &:hover {
+      background-color: brown;
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  &:hover {
+    background-color: $main-light-orange;
+    color: rgb(255, 255, 255);
+    animation: bounce 0.8s infinite alternate;
+    &:disabled {
+      animation: none;
+    }
+  }
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  @keyframes bounce {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.05);
+    }
+  }
 }
+
 .confirm-title {
   text-align: center;
   font-size: $title-font;
