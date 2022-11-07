@@ -12,7 +12,10 @@
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "@types/react-redux": "^7.1.24",
+    "aos": "^3.0.0-beta.6",
     "react": "^18.1.0",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.30.0",
     "react-redux": "^8.0.1",
@@ -61,6 +64,8 @@
     ]
   },
   "devDependencies": {
+    "@types/aos": "^3.0.4",
+    "@types/react-beautiful-dnd": "^13.1.2",
     "@typescript-eslint/eslint-plugin": "^5.22.0",
     "@typescript-eslint/parser": "^5.22.0",
     "eslint": "^8.14.0",

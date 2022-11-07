@@ -2,7 +2,97 @@
 
 .about-app {
   width: $main-width;
-  height: $section-height;
-  border: 1px solid rgb(211, 230, 44);
   margin: auto;
+
+  @media (max-width: 1024px) {
+    width: 1000px;
+  }
+
+  .title {
+    @include h2;
+    text-align: start;
+    margin: 80px 0 0 120px;
+
+    @media (max-width: 1024px) {
+      @include h3;
+      margin: 50px 0 0 70px;
+    }
+  }
+
+  .about-app__card {
+    height: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $main-width;
+    margin: 50px 0;
+
+    @media (max-width: 1024px) {
+      width: 1000px;
+      height: 300px;
+    }
+  }
+
+  .card-img {
+    width: 600px;
+    height: 500px;
+
+    @media (max-width: 1024px) {
+      width: 400px;
+      height: 300px;
+    }
+  }
+
+  .card-img__main,
+  .card-img__board,
+  .card-img__dragNdrop {
+    background-size: 600px, 500px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media (max-width: 1024px) {
+      background-size: 400px, 300px;
+    }
+  }
+
+  .card-img__main {
+    background-image: url(../../assets/main-screen.PNG);
+  }
+
+  .card-img__board {
+    background-image: url(../../assets/board-screen.PNG);
+  }
+
+  .card-img__dragNdrop {
+    background-image: url(../../assets/drag-n-drop-screen.PNG);
+  }
+
+  & article {
+    width: 600px;
+  }
+
+  & h3 {
+    @include h3;
+    text-align: center;
+    color: $main-blue;
+
+    @media (max-width: 1024px) {
+      font-size: $title-font + 6px;
+    }
+  }
+
+  & article:nth-child(2) h3 {
+    color: #ffd4a9;
+  }
+
+  .description {
+    margin-top: 40px;
+    line-height: 25px;
+
+    @media (max-width: 1024px) {
+      width: 455px;
+      margin: 30px 0 0 100px;
+      line-height: 20px;
+    }
+  }
 }

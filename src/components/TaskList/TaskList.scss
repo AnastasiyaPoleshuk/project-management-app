@@ -7,9 +7,10 @@
   overflow-y: auto;
 }
 .card-list::-webkit-scrollbar {
-  width: 25px;
+  width: 20px;
 }
+
 .card-list::-webkit-scrollbar-thumb {
-  background-color: #c4c9cc;
-  border-right: 0.6rem solid #e2e4e6;
+  background-color: #e8ecf8;
+  border-right: 0.5rem solid #fff;
 }

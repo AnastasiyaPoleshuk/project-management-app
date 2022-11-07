@@ -5,4 +5,4 @@ interface authState {
   error: Error | null;
 }
 
-export type { authState };
+export default authState;

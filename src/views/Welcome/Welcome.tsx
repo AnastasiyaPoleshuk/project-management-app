@@ -8,11 +8,14 @@ const Welcome = () => {
   return (
     <>
       <section className="welcome">
-        <div className="">
+        <div className="title-blok">
           <h1 className="title">Welcome to Goodie!</h1>
-          <p>something interesting and useful text about application</p>
+          <p>
+            Goodie &mdash; an application that will help you and your team to easily achieve their
+            goals.
+          </p>
         </div>
-        <img src="" alt="something great" className="welcome-img" />
+        <i className="welcome-img" />
       </section>
       <div className="links-box">
         <button

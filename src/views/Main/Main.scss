@@ -2,15 +2,62 @@
 
 .main {
   max-width: $main-width;
-  max-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin: 0 auto;
   padding-top: 13px;
+  @media (max-width: 1024px) {
+    width: 1000px;
+  }
 
-  & .board-wrap {
+  .title {
+    @include h2;
+    width: fit-content;
+    margin: 55px 0 0 80px;
+  }
+
+  .board-wrap {
+    width: 700px;
     height: 800px;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
     justify-content: center;
+
+    @media (max-width: 1024px) {
+      height: 700px;
+    }
+
+    & :nth-child(odd) {
+      margin-right: 150px;
+
+      @media (max-width: 1024px) {
+        margin-right: 55px;
+      }
+    }
+
+    & :nth-child(2n) {
+      margin-left: 150px;
+
+      @media (max-width: 1024px) {
+        margin-left: 55px;
+      }
+    }
+  }
+
+  .img-box {
+    width: 700px;
+    height: 100vh;
+    background-image: url('../.././assets/main-img.png');
+    background-repeat: no-repeat;
+    background-size: 700px, 100vh;
+    background-position: center;
+
+    @media (max-width: 1024px) {
+      width: 670px;
+      height: 90vh;
+      background-size: 500px, 90vh;
+    }
   }
 }

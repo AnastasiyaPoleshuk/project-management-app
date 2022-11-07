@@ -1,44 +1,95 @@
 @import '/src/App.variables.scss';
 
 .overlay {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   top: 0;
   left: 0;
   z-index: 2;
   background: rgba(0, 0, 0, 0.514);
-}
+  margin: 0 !important;
 
-.modal-window {
-  width: 300px;
-  height: 150px;
-  background: rgb(255, 255, 255);
-  border-radius: 20px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-}
+  .modal-window {
+    width: 400px;
+    height: 190px;
+    background: rgb(255, 255, 255);
+    border-radius: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+  }
 
-.modal-title {
-  text-align: center;
-  font-size: $title-font;
-  margin: 10px 0 0 0;
-}
+  @media screen and (max-width: 500px) {
+    .modal-window {
+      padding: 10px;
+      width: 300px;
+      height: 170px;
+    }
+  }
 
-.btn-wrap {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 25px 0 20px 0;
-}
+  .modal-title {
+    text-align: center;
+    font-size: $title-font;
+    margin: 20px 0 !important;
+  }
 
-.btn-success,
-.btn-fail {
-  width: 70px;
-  height: 40px;
-  font-size: $text-font;
-  margin: 0 10px;
+  .btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 34px 0 20px 0 !important;
+  }
+
+  .btn-success,
+  .btn-fail {
+    @include font;
+    display: block;
+    background-color: #fff;
+    font-size: $text-font + 2px;
+    font-weight: bold;
+    color: $main-light-orange;
+    border: 2px solid $main-light-orange;
+    border-radius: 9px;
+
+    padding: 8px 22px;
+    margin: 0 !important;
+    transition: 0.5px;
+
+    &:last-child {
+      background-color: #fff;
+      border: 2px solid brown;
+      color: brown;
+      margin-left: 25px !important;
+
+      &:hover {
+        background-color: brown;
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    &:hover {
+      background-color: $main-light-orange;
+      color: rgb(255, 255, 255);
+      animation: bounce 0.8s infinite alternate;
+      &:disabled {
+        animation: none;
+      }
+    }
+
+    &:disabled {
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    @keyframes bounce {
+      from {
+        transform: scale(1);
+      }
+      to {
+        transform: scale(1.05);
+      }
+    }
+  }
 }

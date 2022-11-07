@@ -24,10 +24,12 @@ export interface IBoard {
 }
 export interface ICreateBoard {
   title: string;
+  description?: string;
   token: string;
 }
 export interface ICreateBoardPreview {
   title: string;
+  description?: string;
 }
 export interface ICreatedBoard {
   id: string;
@@ -39,6 +41,9 @@ export interface IColumn {
   order: number;
 }
 export interface ICreateColumn {
+  title: string;
+}
+export interface IUpdateColumn {
   title: string;
   order: number;
 }
@@ -53,7 +58,6 @@ export interface ITask {
 }
 export interface ICreateTask {
   title: string;
-  order: number;
   description: string;
   userId: string;
 }
@@ -75,4 +79,5 @@ export interface IConfig {
 }
 export interface INewBoardForm {
   title: string;
+  description: string;
 }

@@ -1,22 +1,29 @@
 @import '/src/App.variables.scss';
 
 .boardPreview {
-  width: 350px;
-  height: 300px;
-  border-radius: 15px;
-  border-bottom-left-radius: 70px;
-  border-bottom-right-radius: 70px;
-
+  width: 500px;
+  height: 180px;
+  border-radius: 10px;
   margin: 20px 10px;
-  background: rgb(230, 242, 255);
+  background: linear-gradient(70deg, $main-light-blue, $main-light-pink);
+  transform: scale(1);
+  transition: 0.5s;
+
+  @media (max-width: 1024px) {
+    width: 380px;
+    height: 140px;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(39, 39, 41, 0.151);
+  }
 }
 
 .board-header {
   width: 100%;
-  background: rgb(146, 154, 165);
   height: 50px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,22 +33,33 @@
 .board-title {
   width: fit-content;
   font-size: $title-font;
-  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  color: $main-blue;
+  letter-spacing: -1px;
+  margin: 15px 0 10px 10px;
+
+  @media (max-width: 1024px) {
+    text-transform: none;
+  }
 }
 
 .board-description {
-  font-size: $text-font;
-  margin: 30px;
+  font-size: $descr-font;
+  font-style: italic;
+  text-align: center;
+  margin: 30px !important;
 }
 
 .board-delete {
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   background: none;
-  background-image: url('../../../public/assets/can-trash.png');
+  background-image: url('../.././assets/trash.png');
   background-repeat: no-repeat;
+  background-size: 24px, 24px;
   border: none;
-  opacity: 0.7;
+  opacity: 0.8;
+  margin: 0 !important;
   transition: 0.3s;
 
   &:hover {
